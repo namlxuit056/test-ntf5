@@ -3,7 +3,8 @@
 database: test-ntf5.cr8wqjzbs99c.ap-southeast-1.rds.amazonaws.com
 port: 3306
 password: MwNzkEPL
-
+Node: 14.17.3
+Prisma: 4.0.0
 ## Installation
 
 ```bash
