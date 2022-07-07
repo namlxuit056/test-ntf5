@@ -13,6 +13,7 @@ model User {
   username  String?  @unique
   fullname  String?
   password  String?
+  status    String?  @default("active")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   movies    Movie[]
@@ -21,10 +22,11 @@ model User {
 model Movie {
   id        Int      @id @default(autoincrement())
   url       String?  @unique
+  published Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   authorId  Int
-  author    User @relation(fields: [authorId], references: [id])
+  author    User     @relation(fields: [authorId], references: [id])
 
   @@index([authorId], name: "authorId")
 }
