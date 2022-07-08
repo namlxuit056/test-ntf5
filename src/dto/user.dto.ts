@@ -1,14 +1,13 @@
+import { ApiProperty } from '@nestjs/swagger';
 import {
   IsEmail,
-  IsOptional,
+  IsNumber,
   IsString,
-  Matches,
   MaxLength,
   MinLength,
 } from 'class-validator';
-
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Match } from 'src/decorator/match.decorator';
+import { errMessage } from 'src/message/errMessage';
 
 export class CreateUserDto {
   @IsEmail()
@@ -20,39 +19,18 @@ export class CreateUserDto {
   })
   email: string;
 
-  @IsString()
-  @ApiProperty({
-    type: 'string',
-    example: '',
-    required: false,
-  })
-  @ApiPropertyOptional()
-  username: string;
-
-  @IsString()
-  @ApiProperty({
-    type: 'string',
-    example: '',
-    required: false,
-  })
-  @ApiPropertyOptional()
-  fullname: string;
-
   @ApiProperty({
     type: 'string',
     example: '',
     required: true,
   })
-  @IsString()
-  @MinLength(4)
+  @IsNumber()
+  @MinLength(8)
   @MaxLength(20)
-  @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
-    message: 'password too weak',
-  })
   password: string;
 
-  @IsString()
-  @MinLength(4)
+  @IsNumber()
+  @MinLength(8, { message: errMessage.auth.shortPassword })
   @MaxLength(20)
   @Match('password')
   @ApiProperty({
@@ -70,7 +48,7 @@ export class LoginDto {
     example: '',
     required: true,
   })
-  username: string;
+  email: string;
 
   @IsString()
   @ApiProperty({

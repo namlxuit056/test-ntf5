@@ -10,8 +10,6 @@ datasource mysql {
 model User {
   id        Int      @id @default(autoincrement())
   email     String?  @unique
-  username  String?  @unique
-  fullname  String?
   password  String?
   status    String?  @default("active")
   createdAt DateTime @default(now())
