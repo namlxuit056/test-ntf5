@@ -11,10 +11,24 @@ export class MovieService {
     const created = await this.prismaService.movie.create({
       data: {
         url: movie.url,
+        title: movie.title,
+        desc: movie.desc,
         authorId: user.id,
       },
       select: GetMovieSelect,
     });
     return created;
+  }
+  async getMany({ take, skip }) {
+    const movies = await this.prismaService.movie.findMany({
+      take,
+      skip,
+      select: GetMovieSelect,
+      orderBy: { updatedAt: 'desc' },
+    });
+
+    const count = await this.prismaService.movie.count();
+
+    return { data: movies, count };
   }
 }
