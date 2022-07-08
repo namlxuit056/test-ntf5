@@ -17,11 +17,11 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
-    "postinstall": "prisma generate --schema=./src/prisma/schema.prisma",
+    "postinstall": "npx prisma generate --schema=./src/prisma/schema.prisma",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "prisma-ge": "npx prisma generate --schema=./src/prisma/schema.prisma",
-    "deploy": "npm ci  && npm run build && npm run start:prod"
+    "prisma-ge": "prisma generate --schema=./src/prisma/schema.prisma",
+    "deploy": "npm i  && npm run build &&  npm run start:prod"
   },
   "engines": {
     "node": "14.17.3"
@@ -43,6 +43,7 @@
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "prisma": "^4.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.3",
@@ -63,7 +64,6 @@
     "eslint-plugin-prettier": "^3.1.4",
     "jest": "^26.6.3",
     "prettier": "^2.1.2",
-    "prisma": "^4.0.0",
     "supertest": "^6.0.0",
     "ts-jest": "^26.4.3",
     "ts-loader": "^8.0.8",

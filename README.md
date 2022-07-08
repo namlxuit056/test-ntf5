@@ -5,6 +5,13 @@ port: 3306
 password: MwNzkEPL
 Node: 14.17.3
 Prisma: 4.0.0
+
+## Docs
+
+frontend endpoint: http://fe-ntf5.eba-r76r72bq.ap-southeast-1.elasticbeanstalk.com
+backend api endpoint: http://be-ntf5.eba-r76r72bq.ap-southeast-1.elasticbeanstalk.com/api
+docs endpoint: http://be-ntf5.eba-r76r72bq.ap-southeast-1.elasticbeanstalk.com/swagger
+
 ## Installation
 
 ```bash
