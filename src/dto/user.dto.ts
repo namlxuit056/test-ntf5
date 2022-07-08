@@ -42,7 +42,7 @@ export class CreateUserDto {
 }
 
 export class LoginDto {
-  @IsString()
+  @IsEmail()
   @ApiProperty({
     type: 'string',
     example: '',

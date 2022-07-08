@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
   ApiInternalServerErrorResponse,
@@ -6,7 +6,7 @@ import {
   ApiOperation,
   ApiTags,
 } from '@nestjs/swagger';
-import { CreateUserDto } from 'src/dto/user.dto';
+import { CreateUserDto, LoginDto } from 'src/dto/user.dto';
 import { UserService } from 'src/user/user.service';
 import { AuthService } from './auth.service';
 @Controller('auth')
@@ -31,7 +31,7 @@ export class AuthController {
   @ApiOkResponse({ description: 'Get user success' })
   @ApiInternalServerErrorResponse({ description: 'Internal Server Error ' })
   @ApiBadRequestResponse({ description: 'Bad Request Response' })
-  login(@Request() req) {
-    return this.authService.login(req.user);
+  login(@Body() user: LoginDto) {
+    return this.authService.login(user.email, user.password);
   }
 }

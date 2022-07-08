@@ -11,6 +11,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
 import { AuthModule } from './auth/auth.module';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from './user/user.service';
+import { MovieModule } from './movie/movie.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { UserService } from './user/user.service';
       ttl: 60,
       limit: 10,
     }),
+    MovieModule,
   ],
   controllers: [AppController, AuthController],
   providers: [
