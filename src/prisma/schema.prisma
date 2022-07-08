@@ -10,9 +10,8 @@ datasource mysql {
 model User {
   id        Int      @id @default(autoincrement())
   email     String?  @unique
-  username  String?  @unique
-  fullname  String?
   password  String?
+  status    String?  @default("active")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   movies    Movie[]
@@ -20,11 +19,14 @@ model User {
 
 model Movie {
   id        Int      @id @default(autoincrement())
-  url       String?  @unique
+  title     String?
+  desc      String?  @mysql.Text
+  url       String?
+  published Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   authorId  Int
-  author    User @relation(fields: [authorId], references: [id])
+  author    User     @relation(fields: [authorId], references: [id])
 
   @@index([authorId], name: "authorId")
 }
