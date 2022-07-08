@@ -8,6 +8,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { ShareService } from 'src/share/share.service';
+import { JwtStrategy } from './jwt.strategy';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { ShareService } from 'src/share/share.service';
     UserService,
     PrismaService,
     ShareService,
+    JwtStrategy,
   ],
   controllers: [AuthController],
   exports: [AuthModule],
