@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE `Movie` ADD COLUMN `desc` TEXT NULL,
+    ADD COLUMN `title` VARCHAR(191) NULL;

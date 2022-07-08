@@ -19,6 +19,8 @@ model User {
 
 model Movie {
   id        Int      @id @default(autoincrement())
+  title     String?
+  desc      String?  @mysql.Text
   url       String?
   published Boolean  @default(true)
   createdAt DateTime @default(now())
