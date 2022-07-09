@@ -15,13 +15,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
+const currentUser_decorator_1 = require("../decorator/currentUser.decorator");
 const user_dto_1 = require("../dto/user.dto");
 const user_service_1 = require("../user/user.service");
 const auth_service_1 = require("./auth.service");
+const jwt_auth_guard_1 = require("./jwt-auth.guard");
 let AuthController = class AuthController {
     constructor(authService, userService) {
         this.authService = authService;
         this.userService = userService;
+    }
+    getProfile(currentUser) {
+        console.log(currentUser);
+        return this.authService.profile(currentUser);
     }
     create(user) {
         return this.userService.create(user);
@@ -30,6 +36,15 @@ let AuthController = class AuthController {
         return this.authService.login(user.email, user.password);
     }
 };
+__decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, common_1.Get)('/profile'),
+    (0, swagger_1.ApiBearerAuth)(),
+    __param(0, (0, currentUser_decorator_1.CurrentUser)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "getProfile", null);
 __decorate([
     (0, common_1.Post)('/signup'),
     (0, swagger_1.ApiOperation)({ summary: 'Sign up ' }),

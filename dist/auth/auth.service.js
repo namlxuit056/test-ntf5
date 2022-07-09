@@ -44,6 +44,13 @@ let AuthService = class AuthService {
             }),
         };
     }
+    async profile(user) {
+        const profile = await this.prismaService.user.findUnique({
+            where: { id: user.id },
+        });
+        delete profile.password;
+        return profile;
+    }
 };
 AuthService = __decorate([
     (0, common_1.Injectable)(),

@@ -1,14 +1,18 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards, Get } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
+  ApiBearerAuth,
   ApiInternalServerErrorResponse,
   ApiOkResponse,
   ApiOperation,
   ApiTags,
 } from '@nestjs/swagger';
+import { User } from '@prisma/client';
+import { CurrentUser } from 'src/decorator/currentUser.decorator';
 import { CreateUserDto, LoginDto } from 'src/dto/user.dto';
 import { UserService } from 'src/user/user.service';
 import { AuthService } from './auth.service';
+import { JwtAuthGuard } from './jwt-auth.guard';
 @Controller('auth')
 @ApiTags('auth')
 export class AuthController {
@@ -16,6 +20,14 @@ export class AuthController {
     private readonly authService: AuthService,
     private readonly userService: UserService,
   ) {}
+
+  @UseGuards(JwtAuthGuard)
+  @Get('/profile')
+  @ApiBearerAuth()
+  getProfile(@CurrentUser() currentUser: User) {
+    console.log(currentUser);
+    return this.authService.profile(currentUser);
+  }
 
   @Post('/signup')
   @ApiOperation({ summary: 'Sign up ' })

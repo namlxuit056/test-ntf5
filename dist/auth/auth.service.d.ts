@@ -9,4 +9,5 @@ export declare class AuthService {
     login(email: any, password: any): Promise<{
         access_token: string;
     }>;
+    profile(user: any): Promise<import(".prisma/client").User>;
 }
