@@ -8,8 +8,8 @@ Prisma: 4.0.0
 
 ## Docs
 
-frontend endpoint: http://fe-ntf5.eba-r76r72bq.ap-southeast-1.elasticbeanstalk.com
 backend api endpoint: http://be-ntf5.eba-r76r72bq.ap-southeast-1.elasticbeanstalk.com/api
+frontend endpoint: http://fe-ntf5.eba-r76r72bq.ap-southeast-1.elasticbeanstalk.com
 docs endpoint: http://be-ntf5.eba-r76r72bq.ap-southeast-1.elasticbeanstalk.com/swagger
 
 ## Installation

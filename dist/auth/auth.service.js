@@ -46,6 +46,8 @@ let AuthService = class AuthService {
         }
         else {
             user = await this.validateUser({ email, password });
+            if (!user)
+                throw new common_1.UnauthorizedException();
         }
         const payload = { email: user.email, sub: user.id };
         return {

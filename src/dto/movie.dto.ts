@@ -1,14 +1,26 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
+import {
+  IsInt,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  IsUrl,
+  Max,
+  Min,
+} from 'class-validator';
 import { Transform } from 'class-transformer';
+import { UrlTransform } from 'src/transform/urlTransform';
 
 export class ShareMovieDto {
   @IsString()
+  @IsNotEmpty()
   @ApiProperty({
     type: 'string',
     example: '',
     required: true,
   })
+  @UrlTransform()
+  @IsUrl(undefined, { message: 'URL is not valid.' })
   url: string;
 
   @IsString()

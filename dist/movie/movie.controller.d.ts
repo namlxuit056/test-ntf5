@@ -4,7 +4,7 @@ import { MovieService } from './movie.service';
 export declare class MovieController {
     private readonly movieService;
     constructor(movieService: MovieService);
-    login(movie: ShareMovieDto, currentUser: User): Promise<{}>;
+    share(movie: ShareMovieDto, currentUser: User): Promise<{}>;
     getMany(params: GetManyMovieDto): Promise<{
         data: {}[];
         count: number;

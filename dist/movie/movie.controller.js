@@ -23,7 +23,7 @@ let MovieController = class MovieController {
     constructor(movieService) {
         this.movieService = movieService;
     }
-    login(movie, currentUser) {
+    share(movie, currentUser) {
         return this.movieService.share(movie, currentUser);
     }
     getMany(params) {
@@ -43,7 +43,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [movie_dto_1.ShareMovieDto, Object]),
     __metadata("design:returntype", void 0)
-], MovieController.prototype, "login", null);
+], MovieController.prototype, "share", null);
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Get movies' }),
     (0, swagger_1.ApiOkResponse)({ description: 'Get movies success' }),

@@ -24,7 +24,7 @@ export class MovieController {
   @ApiOkResponse({ description: 'Create movie success' })
   @ApiInternalServerErrorResponse({ description: 'Internal Server Error ' })
   @ApiBadRequestResponse({ description: 'Bad Request Response' })
-  login(@Body() movie: ShareMovieDto, @CurrentUser() currentUser: User) {
+  share(@Body() movie: ShareMovieDto, @CurrentUser() currentUser: User) {
     return this.movieService.share(movie, currentUser);
   }
 

@@ -13,15 +13,19 @@ exports.GetManyMovieDto = exports.ShareMovieDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 const class_transformer_1 = require("class-transformer");
+const urlTransform_1 = require("../transform/urlTransform");
 class ShareMovieDto {
 }
 __decorate([
     (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
     (0, swagger_1.ApiProperty)({
         type: 'string',
         example: '',
         required: true,
     }),
+    (0, urlTransform_1.UrlTransform)(),
+    (0, class_validator_1.IsUrl)(undefined, { message: 'URL is not valid.' }),
     __metadata("design:type", String)
 ], ShareMovieDto.prototype, "url", void 0);
 __decorate([
