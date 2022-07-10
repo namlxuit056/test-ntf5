@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const common_1 = require("@nestjs/common");
 const core_1 = require("@nestjs/core");
 const swagger_1 = require("@nestjs/swagger");
 const app_module_1 = require("./app.module");
@@ -8,6 +9,14 @@ async function bootstrap() {
         bodyParser: true,
         cors: true,
     });
+    app.useGlobalPipes(new common_1.ValidationPipe({
+        transform: true,
+        whitelist: true,
+        exceptionFactory: (error) => {
+            const objError = error[0].constraints;
+            throw new common_1.HttpException(objError[Object.keys(objError)[0]], common_1.HttpStatus.BAD_REQUEST);
+        },
+    }));
     app.setGlobalPrefix('api');
     const config = new swagger_1.DocumentBuilder()
         .setTitle('API NTF5')

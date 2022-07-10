@@ -1,3 +1,4 @@
+import { ValidationPipe, HttpException, HttpStatus } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
@@ -7,6 +8,20 @@ async function bootstrap() {
     bodyParser: true,
     cors: true,
   });
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      whitelist: true,
+      exceptionFactory: (error) => {
+        const objError = error[0].constraints;
+        throw new HttpException(
+          objError[Object.keys(objError)[0]],
+          HttpStatus.BAD_REQUEST,
+        );
+      },
+    }),
+  );
 
   app.setGlobalPrefix('api');
   const config = new DocumentBuilder()

@@ -21,17 +21,15 @@ export class MovieController {
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Share movie' })
-  @ApiOkResponse({ description: 'Get user success' })
+  @ApiOkResponse({ description: 'Create movie success' })
   @ApiInternalServerErrorResponse({ description: 'Internal Server Error ' })
   @ApiBadRequestResponse({ description: 'Bad Request Response' })
   login(@Body() movie: ShareMovieDto, @CurrentUser() currentUser: User) {
     return this.movieService.share(movie, currentUser);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
-  @ApiOperation({ summary: 'Share movie' })
-  @ApiOkResponse({ description: 'Get user success' })
+  @ApiOperation({ summary: 'Get movies' })
+  @ApiOkResponse({ description: 'Get movies success' })
   @ApiInternalServerErrorResponse({ description: 'Internal Server Error ' })
   @ApiBadRequestResponse({ description: 'Bad Request Response' })
   @Get('')

@@ -35,7 +35,7 @@ __decorate([
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, swagger_1.ApiBearerAuth)(),
     (0, swagger_1.ApiOperation)({ summary: 'Share movie' }),
-    (0, swagger_1.ApiOkResponse)({ description: 'Get user success' }),
+    (0, swagger_1.ApiOkResponse)({ description: 'Create movie success' }),
     (0, swagger_1.ApiInternalServerErrorResponse)({ description: 'Internal Server Error ' }),
     (0, swagger_1.ApiBadRequestResponse)({ description: 'Bad Request Response' }),
     __param(0, (0, common_1.Body)()),
@@ -45,10 +45,8 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], MovieController.prototype, "login", null);
 __decorate([
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
-    (0, swagger_1.ApiBearerAuth)(),
-    (0, swagger_1.ApiOperation)({ summary: 'Share movie' }),
-    (0, swagger_1.ApiOkResponse)({ description: 'Get user success' }),
+    (0, swagger_1.ApiOperation)({ summary: 'Get movies' }),
+    (0, swagger_1.ApiOkResponse)({ description: 'Get movies success' }),
     (0, swagger_1.ApiInternalServerErrorResponse)({ description: 'Internal Server Error ' }),
     (0, swagger_1.ApiBadRequestResponse)({ description: 'Bad Request Response' }),
     (0, common_1.Get)(''),

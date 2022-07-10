@@ -15,17 +15,17 @@ const jwt_1 = require("@nestjs/jwt");
 const bcrypt = require("bcryptjs");
 const user_dto_1 = require("../dto/user.dto");
 const prisma_service_1 = require("../prisma/prisma.service");
+const user_service_1 = require("../user/user.service");
 let AuthService = class AuthService {
-    constructor(prismaService, jwtService) {
+    constructor(prismaService, jwtService, userService) {
         this.prismaService = prismaService;
         this.jwtService = jwtService;
+        this.userService = userService;
     }
     async validateUser({ email, password }) {
         const user = await this.prismaService.user.findUnique({
             where: { email },
         });
-        if (!user)
-            return null;
         const valid = await bcrypt.compare(password, user.password);
         if (user && valid) {
             delete user.password;
@@ -34,9 +34,19 @@ let AuthService = class AuthService {
         return null;
     }
     async login(email, password) {
-        const user = await this.validateUser({ email, password });
-        if (!user)
-            throw new common_1.UnauthorizedException();
+        let user = await this.prismaService.user.findUnique({
+            where: { email },
+        });
+        if (!user) {
+            user = await this.userService.create({
+                email,
+                password,
+                passwordConfirm: password,
+            });
+        }
+        else {
+            user = await this.validateUser({ email, password });
+        }
         const payload = { email: user.email, sub: user.id };
         return {
             access_token: this.jwtService.sign(payload, {
@@ -55,7 +65,8 @@ let AuthService = class AuthService {
 AuthService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [prisma_service_1.PrismaService,
-        jwt_1.JwtService])
+        jwt_1.JwtService,
+        user_service_1.UserService])
 ], AuthService);
 exports.AuthService = AuthService;
 //# sourceMappingURL=auth.service.js.map

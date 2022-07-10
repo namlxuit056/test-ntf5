@@ -32,8 +32,8 @@ __decorate([
         example: '',
         required: true,
     }),
+    (0, class_validator_1.MinLength)(8, { message: errMessage_1.errMessage.auth.shortPassword }),
     (0, class_validator_1.IsNumber)(),
-    (0, class_validator_1.MinLength)(8),
     (0, class_validator_1.MaxLength)(20),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "password", void 0);

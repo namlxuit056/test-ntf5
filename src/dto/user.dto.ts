@@ -24,8 +24,8 @@ export class CreateUserDto {
     example: '',
     required: true,
   })
+  @MinLength(8, { message: errMessage.auth.shortPassword })
   @IsNumber()
-  @MinLength(8)
   @MaxLength(20)
   password: string;
 
