@@ -10,10 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginDto = exports.CreateUserDto = void 0;
+const errMessage_1 = require("./../message/errMessage");
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 const match_decorator_1 = require("../decorator/match.decorator");
-const errMessage_1 = require("../message/errMessage");
 class CreateUserDto {
 }
 __decorate([

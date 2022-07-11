@@ -1,7 +1,7 @@
-import { PrismaService } from 'src/prisma/prisma.service';
+import { CreateUserDto } from './../dto/user.dto';
+import { ShareService } from './../share/share.service';
+import { PrismaService } from './../prisma/prisma.service';
 import { User } from '@prisma/client';
-import { CreateUserDto } from 'src/dto/user.dto';
-import { ShareService } from 'src/share/share.service';
 export declare class UserService {
     private readonly prismaService;
     private readonly shareService;

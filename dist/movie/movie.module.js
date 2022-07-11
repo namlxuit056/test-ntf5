@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MovieModule = void 0;
-const prisma_service_1 = require("../prisma/prisma.service");
+const prisma_service_1 = require("./../prisma/prisma.service");
 const common_1 = require("@nestjs/common");
 const movie_service_1 = require("./movie.service");
 const movie_controller_1 = require("./movie.controller");

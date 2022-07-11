@@ -1,3 +1,4 @@
+import { UrlTransform } from './../transform/urlTransform';
 import { ApiProperty } from '@nestjs/swagger';
 import {
   IsInt,
@@ -9,7 +10,6 @@ import {
   Min,
 } from 'class-validator';
 import { Transform } from 'class-transformer';
-import { UrlTransform } from 'src/transform/urlTransform';
 
 export class ShareMovieDto {
   @IsString()

@@ -1,10 +1,9 @@
+import { errMessage } from './../message/errMessage';
+import { CreateUserDto } from './../dto/user.dto';
+import { ShareService } from './../share/share.service';
+import { PrismaService } from './../prisma/prisma.service';
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { errMessage } from 'src/message/errMessage';
 import { User } from '@prisma/client';
-import { CreateUserDto } from 'src/dto/user.dto';
-import { ShareService } from 'src/share/share.service';
-
 @Injectable()
 export class UserService {
   constructor(

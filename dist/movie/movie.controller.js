@@ -13,11 +13,11 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MovieController = void 0;
+const movie_dto_1 = require("./../dto/movie.dto");
+const currentUser_decorator_1 = require("./../decorator/currentUser.decorator");
+const jwt_auth_guard_1 = require("./../auth/jwt-auth.guard");
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
-const currentUser_decorator_1 = require("../decorator/currentUser.decorator");
-const movie_dto_1 = require("../dto/movie.dto");
 const movie_service_1 = require("./movie.service");
 let MovieController = class MovieController {
     constructor(movieService) {

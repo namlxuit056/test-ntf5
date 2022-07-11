@@ -1,5 +1,5 @@
+import { PrismaService } from './../prisma/prisma.service';
 import { ShareMovieDto } from './../dto/movie.dto';
-import { PrismaService } from 'src/prisma/prisma.service';
 import { User } from '@prisma/client';
 export declare class MovieService {
     private readonly prismaService;

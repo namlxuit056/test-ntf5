@@ -1,3 +1,4 @@
+import { errMessage } from './../message/errMessage';
 import { ApiProperty } from '@nestjs/swagger';
 import {
   IsEmail,
@@ -6,8 +7,7 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
-import { Match } from 'src/decorator/match.decorator';
-import { errMessage } from 'src/message/errMessage';
+import { Match } from '../decorator/match.decorator';
 
 export class CreateUserDto {
   @IsEmail()

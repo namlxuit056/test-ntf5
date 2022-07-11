@@ -1,3 +1,6 @@
+import { CreateUserDto, LoginDto } from './../dto/user.dto';
+import { CurrentUser } from './../decorator/currentUser.decorator';
+import { UserService } from './../user/user.service';
 import { Body, Controller, Post, UseGuards, Get } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
@@ -8,9 +11,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { User } from '@prisma/client';
-import { CurrentUser } from 'src/decorator/currentUser.decorator';
-import { CreateUserDto, LoginDto } from 'src/dto/user.dto';
-import { UserService } from 'src/user/user.service';
+
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
 @Controller('auth')

@@ -10,12 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
+const user_service_1 = require("./../user/user.service");
+const prisma_service_1 = require("./../prisma/prisma.service");
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
 const bcrypt = require("bcryptjs");
-const user_dto_1 = require("../dto/user.dto");
-const prisma_service_1 = require("../prisma/prisma.service");
-const user_service_1 = require("../user/user.service");
 let AuthService = class AuthService {
     constructor(prismaService, jwtService, userService) {
         this.prismaService = prismaService;

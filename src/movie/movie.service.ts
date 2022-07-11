@@ -1,6 +1,6 @@
+import { PrismaService } from './../prisma/prisma.service';
 import { GetMovieSelect } from './movie.select';
 import { ShareMovieDto } from './../dto/movie.dto';
-import { PrismaService } from 'src/prisma/prisma.service';
 import { Injectable } from '@nestjs/common';
 import { User } from '@prisma/client';
 

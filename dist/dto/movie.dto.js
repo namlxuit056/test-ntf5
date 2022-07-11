@@ -10,10 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GetManyMovieDto = exports.ShareMovieDto = void 0;
+const urlTransform_1 = require("./../transform/urlTransform");
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 const class_transformer_1 = require("class-transformer");
-const urlTransform_1 = require("../transform/urlTransform");
 class ShareMovieDto {
 }
 __decorate([

@@ -1,14 +1,17 @@
-import { AuthService } from './auth.service';
+import { userTestDto } from '../../test/mock/user.mock';
+import { UnauthorizedException } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
-import { AuthController } from './auth.controller';
-import { UserService } from 'src/user/user.service';
+import { CreateUserDto } from 'src/dto/user.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ShareService } from 'src/share/share.service';
-import { JwtService } from '@nestjs/jwt';
-import { CreateUserDto } from 'src/dto/user.dto';
+import { UserService } from 'src/user/user.service';
+import { AuthController } from './auth.controller';
+import { AuthService } from './auth.service';
 
 describe('Auth Controller', () => {
   let controller: AuthController;
+  let jwtService: JwtService;
   const mockUserService = {
     create: jest.fn((dto: CreateUserDto) => {
       return {
@@ -37,24 +40,30 @@ describe('Auth Controller', () => {
       .compile();
 
     controller = module.get<AuthController>(AuthController);
+    jwtService = module.get<JwtService>(JwtService);
   });
 
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
 
-  it('should signup a user', async () => {
-    const dto = {
-      email: 'foo@bar.com',
-      password: 'acb@123',
-      passwordConfirm: 'acb@123',
-    };
-    expect(await controller.create(dto)).toEqual({
-      id: expect.any(Number),
-      email: dto.email,
-      status: 'active',
-      createdAt: expect.any(Date),
-      updatedAt: expect.any(Date),
+  it('should be defined', () => {
+    expect(jwtService).toBeDefined();
+  });
+
+  it('should login user success', async () => {
+    const data = await controller.login(userTestDto);
+    const check = await jwtService.verify(data.access_token, {
+      secret: process.env.SECRET,
     });
+    expect(check.email).toEqual(userTestDto.email);
+  });
+
+  it('shoud login fail', async () => {
+    try {
+      await controller.login(userTestDto);
+    } catch (err) {
+      expect(err).toBeInstanceOf(UnauthorizedException);
+    }
   });
 });

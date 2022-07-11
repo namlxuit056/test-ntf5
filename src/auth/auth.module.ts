@@ -1,3 +1,4 @@
+import { ShareService } from './../share/share.service';
 import { PrismaService } from './../prisma/prisma.service';
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
@@ -7,7 +8,6 @@ import { UserService } from '../user/user.service';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
-import { ShareService } from 'src/share/share.service';
 import { JwtStrategy } from './jwt.strategy';
 
 @Module({

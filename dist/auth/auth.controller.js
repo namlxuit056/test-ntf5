@@ -13,11 +13,11 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
+const user_dto_1 = require("./../dto/user.dto");
+const currentUser_decorator_1 = require("./../decorator/currentUser.decorator");
+const user_service_1 = require("./../user/user.service");
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const currentUser_decorator_1 = require("../decorator/currentUser.decorator");
-const user_dto_1 = require("../dto/user.dto");
-const user_service_1 = require("../user/user.service");
 const auth_service_1 = require("./auth.service");
 const jwt_auth_guard_1 = require("./jwt-auth.guard");
 let AuthController = class AuthController {

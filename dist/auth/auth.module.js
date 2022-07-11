@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var AuthModule_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthModule = void 0;
+const share_service_1 = require("./../share/share.service");
 const prisma_service_1 = require("./../prisma/prisma.service");
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
@@ -17,7 +18,6 @@ const user_service_1 = require("../user/user.service");
 const auth_controller_1 = require("./auth.controller");
 const auth_service_1 = require("./auth.service");
 const jwt_auth_guard_1 = require("./jwt-auth.guard");
-const share_service_1 = require("../share/share.service");
 const jwt_strategy_1 = require("./jwt.strategy");
 let AuthModule = AuthModule_1 = class AuthModule {
 };

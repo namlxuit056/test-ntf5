@@ -1,3 +1,6 @@
+import { ShareMovieDto, GetManyMovieDto } from './../dto/movie.dto';
+import { CurrentUser } from './../decorator/currentUser.decorator';
+import { JwtAuthGuard } from './../auth/jwt-auth.guard';
 import { Body, Controller, Post, UseGuards, Get, Param } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
@@ -8,9 +11,6 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { User } from '@prisma/client';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { CurrentUser } from 'src/decorator/currentUser.decorator';
-import { GetManyMovieDto, ShareMovieDto } from 'src/dto/movie.dto';
 import { MovieService } from './movie.service';
 
 @Controller('movies')
