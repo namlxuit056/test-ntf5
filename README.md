@@ -12,6 +12,19 @@ backend api endpoint: http://be-ntf5.eba-r76r72bq.ap-southeast-1.elasticbeanstal
 frontend endpoint: http://fe-ntf5.eba-r76r72bq.ap-southeast-1.elasticbeanstalk.com
 docs endpoint: http://be-ntf5.eba-r76r72bq.ap-southeast-1.elasticbeanstalk.com/swagger
 
+## Test
+
+```bash
+# unit tests
+$ npm run test
+
+# e2e tests
+$ npm run test:e2e
+
+# test coverage
+$ npm run test:cov
+```
+
 ## Installation
 
 ```bash
@@ -29,17 +42,4 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
