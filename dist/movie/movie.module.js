@@ -15,6 +15,13 @@ let MovieModule = class MovieModule {
 };
 MovieModule = __decorate([
     (0, common_1.Module)({
+        imports: [
+            common_1.CacheModule.register({
+                ttl: 20,
+                max: 10,
+                isGlobal: true,
+            }),
+        ],
         providers: [movie_service_1.MovieService, prisma_service_1.PrismaService],
         controllers: [movie_controller_1.MovieController],
     })

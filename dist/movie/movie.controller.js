@@ -49,6 +49,8 @@ __decorate([
     (0, swagger_1.ApiOkResponse)({ description: 'Get movies success' }),
     (0, swagger_1.ApiInternalServerErrorResponse)({ description: 'Internal Server Error ' }),
     (0, swagger_1.ApiBadRequestResponse)({ description: 'Bad Request Response' }),
+    (0, common_1.CacheKey)('share-movie'),
+    (0, common_1.CacheTTL)(20),
     (0, common_1.Get)(''),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),

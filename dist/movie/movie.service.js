@@ -8,14 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MovieService = void 0;
 const prisma_service_1 = require("./../prisma/prisma.service");
 const movie_select_1 = require("./movie.select");
 const common_1 = require("@nestjs/common");
 let MovieService = class MovieService {
-    constructor(prismaService) {
+    constructor(prismaService, cacheManager) {
         this.prismaService = prismaService;
+        this.cacheManager = cacheManager;
     }
     async share(movie, user) {
         const created = await this.prismaService.movie.create({
@@ -27,6 +31,7 @@ let MovieService = class MovieService {
             },
             select: movie_select_1.GetMovieSelect,
         });
+        await this.cacheManager.del('share-movie');
         return created;
     }
     async getMany({ take, skip }) {
@@ -42,7 +47,8 @@ let MovieService = class MovieService {
 };
 MovieService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [prisma_service_1.PrismaService])
+    __param(1, (0, common_1.Inject)(common_1.CACHE_MANAGER)),
+    __metadata("design:paramtypes", [prisma_service_1.PrismaService, Object])
 ], MovieService);
 exports.MovieService = MovieService;
 //# sourceMappingURL=movie.service.js.map

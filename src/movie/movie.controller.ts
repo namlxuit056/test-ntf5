@@ -1,7 +1,16 @@
 import { ShareMovieDto, GetManyMovieDto } from './../dto/movie.dto';
 import { CurrentUser } from './../decorator/currentUser.decorator';
 import { JwtAuthGuard } from './../auth/jwt-auth.guard';
-import { Body, Controller, Post, UseGuards, Get, Param } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Post,
+  UseGuards,
+  Get,
+  Param,
+  CacheTTL,
+  CacheKey,
+} from '@nestjs/common';
 import {
   ApiBadRequestResponse,
   ApiBearerAuth,
@@ -32,6 +41,8 @@ export class MovieController {
   @ApiOkResponse({ description: 'Get movies success' })
   @ApiInternalServerErrorResponse({ description: 'Internal Server Error ' })
   @ApiBadRequestResponse({ description: 'Bad Request Response' })
+  @CacheKey('share-movie')
+  @CacheTTL(20)
   @Get('')
   getMany(@Param() params: GetManyMovieDto) {
     return this.movieService.getMany({ take: params.take, skip: params.skip });
